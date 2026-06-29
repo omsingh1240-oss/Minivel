@@ -1,77 +1,90 @@
-import {
-Link
-}
-from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 export default function DashboardHeader(){
 
+const [company,setCompany]=useState("Minivel")
+
+useEffect(()=>{
+
+const settings=
+
+JSON.parse(
+localStorage.getItem("minivel_settings")
+)
+
+if(settings?.company){
+setCompany(settings.company)
+}
+
+},[])
+
 return(
 
-<div
-className="
+<div className="
 flex
-
 flex-col
 md:flex-row
-
 justify-between
-
 gap-6
-
 mb-10
-"
->
+pb-6
+border-b border-slate-200/50 dark:border-zinc-800
+">
 
-<div>
+{/* LEFT */}
+<div className="space-y-1">
 
-<h1
-className="
-text-3xl
-md:text-5xl
-
+<h1 className="
+text-3xl md:text-5xl
 font-bold
-"
->
+text-slate-900 dark:text-white
+">
 
 Dashboard
 
 </h1>
 
-<p
-className="
+<p className="
 text-gray-500
-mt-2
-"
->
+">
 
-Welcome Back
+Welcome back
+
+</p>
+
+<p className="
+text-lg
+font-semibold
+text-blue-700
+mt-1
+">
+
+{company}
 
 </p>
 
 </div>
 
-<div
-className="
+{/* RIGHT */}
+<div className="
 flex
-
 flex-wrap
-
 gap-3
-"
->
+items-center
+">
 
 <Link
 to="/"
-
 className="
 bg-blue-700
-
 text-white
-
-px-5
-py-3
-
+px-5 py-3
 rounded-xl
+font-medium
+transition
+hover:bg-blue-800
+active:scale-[0.98]
 "
 >
 
@@ -85,14 +98,15 @@ placeholder="Search"
 
 className="
 border
-
-px-5
-py-3
-
+border-slate-200 dark:border-zinc-700
+bg-white dark:bg-zinc-900
+text-slate-900 dark:text-white
+px-5 py-3
 rounded-xl
-
-w-full
-md:w-[240px]
+w-full md:w-[240px]
+outline-none
+focus:ring-2 focus:ring-blue-500
+transition
 "
 />
 
