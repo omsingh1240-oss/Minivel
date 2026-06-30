@@ -214,11 +214,17 @@ rounded-xl
 />
 )}
 
-{/* INFO ROW */}
-<div className="flex justify-between items-start gap-4">
+{/* INFO ROW (FIXED) */}
+<div className="
+flex flex-col md:flex-row
+md:justify-between
+md:items-center
+gap-4
+">
 
-<div>
-<p className="font-medium truncate max-w-[200px]">
+{/* LEFT */}
+<div className="min-w-0">
+<p className="font-medium truncate max-w-[240px] md:max-w-[320px]">
 {file.name}
 </p>
 
@@ -229,7 +235,12 @@ rounded-xl
 </p>
 </div>
 
-<div className="flex items-center gap-3">
+{/* RIGHT */}
+<div className="
+flex flex-wrap md:flex-nowrap
+items-center gap-3
+justify-start md:justify-end
+">
 
 <span className="text-gray-400 text-sm whitespace-nowrap">
 
@@ -249,6 +260,7 @@ font-medium
 hover:bg-blue-800
 transition
 active:scale-[0.98]
+whitespace-nowrap
 "
 >
 
@@ -263,6 +275,7 @@ text-sm
 text-red-500
 hover:text-red-600
 transition
+whitespace-nowrap
 "
 >
 
@@ -275,7 +288,12 @@ Remove
 </div>
 
 {/* PROGRESS BAR */}
-<div className="h-2 bg-slate-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+<div className="
+h-2
+bg-slate-100 dark:bg-zinc-800
+rounded-full
+overflow-hidden
+">
 
 <div
 style={{width:`${file.progress}%`}}
